@@ -472,7 +472,7 @@ var _ = DescribeSanity("Controller Service", func(sc *SanityContext) {
 			_, err := c.DeleteVolume(
 				context.Background(),
 				&csi.DeleteVolumeRequest{
-					VolumeId:                "reallyfakevolumeid",
+					VolumeId:                "12345",
 					ControllerDeleteSecrets: sc.Secrets.DeleteVolumeSecret,
 				},
 			)
@@ -618,7 +618,7 @@ var _ = DescribeSanity("Controller Service", func(sc *SanityContext) {
 			_, err := c.ValidateVolumeCapabilities(
 				context.Background(),
 				&csi.ValidateVolumeCapabilitiesRequest{
-					VolumeId: "some-vol-id",
+					VolumeId: "12345",
 					VolumeCapabilities: []*csi.VolumeCapability{
 						{
 							AccessType: &csi.VolumeCapability_Mount{
@@ -789,8 +789,8 @@ var _ = DescribeSanity("Controller Service", func(sc *SanityContext) {
 			conpubvol, err := c.ControllerPublishVolume(
 				context.Background(),
 				&csi.ControllerPublishVolumeRequest{
-					VolumeId: "some-vol-id",
-					NodeId:   "some-node-id",
+					VolumeId: "12345",
+					NodeId:   "9876",
 					VolumeCapability: &csi.VolumeCapability{
 						AccessType: &csi.VolumeCapability_Mount{
 							Mount: &csi.VolumeCapability_MountVolume{},
@@ -847,7 +847,7 @@ var _ = DescribeSanity("Controller Service", func(sc *SanityContext) {
 				context.Background(),
 				&csi.ControllerPublishVolumeRequest{
 					VolumeId: vol.GetVolume().GetId(),
-					NodeId:   "some-fake-node-id",
+					NodeId:   "9876",
 					VolumeCapability: &csi.VolumeCapability{
 						AccessType: &csi.VolumeCapability_Mount{
 							Mount: &csi.VolumeCapability_MountVolume{},
